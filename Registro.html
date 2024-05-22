@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>   
+    <link rel="stylesheet" href="./2.Registro.css">
+    <title>Pagina de Registro e Inicio de Sesión</title>
+</head>
+<body>
+    <!--infrastructura Registro  -->
+    <div class="contenedor-formas register">
+        <!--seccion bienvenida Registro-->
+        <div class="informacion">
+            <div class="informacion-childs">
+                <h2>Bienvenidos a Uñas Spa Yaneth Jimenez</h2>
+                <p>"Tu momento de belleza comienza aquí. Inicia sesión para agendar tu cita."</p>
+                <input type="button" value="Inicia Sesión" id="sign-in">
+            </div>
+        </div>
+        <!--Seccion iconos de redes sociales-->
+        <div class="formas-informacion">
+            <div class="formas-informacion-childs">
+                <h2>Crear Una Cuenta</h2>
+                <div class="iconos">
+                    <i class='bx bxl-whatsapp' ></i>
+                    <i class='bx bxl-tiktok'></i>
+                    <i class='bx bxl-instagram' ></i>
+                </div>
+                <p>Síguenos en nuestras redes</p>
+                <!--Seccion de formulario de registro-->
+                <form action="/validar" method="post" class="form" id="form" onsubmit="return confirmarCorreos()">
+                    <label>
+                        <input id="NombreyApellido" type="text" name="NombreyApellido" placeholder="Nombres y Apellidos">
+                    </label>
+                    <label>
+                        <input id="correo" type="email" name="correo" placeholder="Correo Electrónico">
+                    </label>
+                    <label>
+                        <input id="confirmarEmail" type="email" placeholder="Confirme Correo Electrónico">
+                    </label>
+                    <label>
+                        <input id="Celular" type="text" placeholder="Número Celular" name="Celular">
+                    </label>
+                    <label>
+                        <input id="contrasenia" type="password" name="contrasenia" placeholder="Contraseña">
+                    </label>
+                    <label id="confirmaContraseña">
+                        <input id="confirmarContraseña" type="password" placeholder="Confirme Contraseña">
+                    </label>
+                    <div id="mensaje">
+                        <p id="confirmacion"></p>
+                        <P id="validacion"></P>
+                        <button id="resistrarse" type="submit" value="Registrar">Registrarme</button>
+                    </div>
+                </form>                
+            </div>
+        </div>
+    </div>
+    <!--infrastructura iniciar Sesion (Login) -->
+    <div class="contenedor-formas login hide">
+        <!--Seccion Bienbenida para iniciar (login)-->
+        <div class="informacion">
+            <div class="informacion-childs">
+                <h2>Bienvenidos a Uñas Spa Yaneth Jimenez</h2>
+                <p>"Si aún no te has resgistrado, registrate aquí"</p>
+                <input type="button" value="Crear Cuenta" id="sign-up">
+            </div>
+        </div>
+        <!--Seccion iconos de redes sociales-->
+        <div class="formas-informacion">
+            <div class="formas-informacion-childs">
+                <h2>Iniciar Sesión</h2>
+                <div class="iconos">
+                    <i class='bx bxl-whatsapp' ></i>
+                    <i class='bx bxl-tiktok'></i>
+                    <i class='bx bxl-instagram' ></i>
+                </div>
+                <p>Síguenos en nuestras redes</p>
+                <!--Seccion formulario para iniciar cuenta (Login)-->
+                <form action="/login" method="post" class="form" id="form">
+                    <label>
+                        <i class='bx bx-envelope'></i>
+                        <input id="correo" type="email" name="correo" placeholder="Correo Electrónico" required>
+                    </label>
+                    <label>
+                        <i class='bx bx-lock-alt'></i>
+                        <input id="contrasenia" type="password" name="contrasenia" placeholder="Contraseña" required>
+                    </label>
+                    <input id="Iniciarsesion" type="submit" value="Iniciar Sesión">
+                </form>                
+            </div>
+        </div>
+    </div>
+
+    <script src="./Pagina_login_Registro2.js"></script>
+
+    <script>
+function confirmarCorreos() {
+    var correo = document.getElementById('correo').value;
+    var confirmarCorreo = document.getElementById('confirmarEmail').value;
+    var contrasenia = document.getElementById('contrasenia').value;
+    var confirmarContrasenia = document.getElementById('confirmarContraseña').value;
+
+    // Validar que los correos electrónicos coincidan
+    if (correo !== confirmarCorreo) {
+        document.getElementById('confirmacion').innerHTML = "Los correos electrónicos no coinciden";
+        return false;
+    } else {
+        document.getElementById('confirmacion').innerHTML = "";
+    }
+
+    // Validar que las contraseñas coincidan
+    if (contrasenia !== confirmarContrasenia) {
+        document.getElementById('validacion').innerHTML = "Las contraseñas no coinciden";
+        return false;
+    } else {
+        document.getElementById('validacion').innerHTML = "";
+    }
+
+    return true; // Permitir enviar el formulario si todas las validaciones son exitosas
+}
+
+    </script>
+</body>
+</html>
